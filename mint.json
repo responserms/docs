@@ -1,5 +1,5 @@
 {
-  "name": "Starter Kit",
+  "name": "Response",
   "logo": {
     "dark": "/logo/dark.png",
     "light": "/logo/light.png"
@@ -24,7 +24,7 @@
     {
       "name": "API Reference",
       "icon": "rectangle-terminal",
-      "url": "api-reference"
+      "url": "api-v1"
     },
     {
       "name": "Changelog",
@@ -40,15 +40,29 @@
   "navigation": [
     {
       "group": "Home",
-      "pages": ["introduction", "development"]
+      "pages": [
+        "introduction",
+        "development"
+      ]
     },
     {
       "group": "Learn More",
-      "pages": ["features", "resources"]
+      "pages": [
+        "features",
+        "resources"
+      ]
     },
     {
-      "group": "API Documentation",
-      "pages": ["api-reference/authentication"]
+      "group": "API Reference",
+      "pages": [
+        "api-v1/authentication"
+      ]
+    },
+    {
+      "group": "User",
+      "pages": [
+        "api-v1/user/get"
+      ]
     },
     {
       "group": "Endpoint Examples",

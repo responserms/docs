@@ -1,0 +1,114 @@
+openapi: 3.0.3
+info:
+  title: Goa API
+  description: The Response API provides a complete set of endpoints to manage all objects within the Response platform. Our web, mobile, and desktop applications also use this API. If you're interested in building your own application or integration on top of the Response platform, you'll need to use this API.
+  version: "1.0"
+servers:
+  - url: https://api.responserms.com/v1
+paths:
+  /user:
+    get:
+      tags:
+        - User
+      summary: Current User
+      description: Return the currently authenticated User.
+      operationId: GetCurrentUser
+      responses:
+        "200":
+          description: OK response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+              example:
+                created_at: "2020-06-01T00:00:00Z"
+                email: john@example.org
+                email_verified: true
+                id: 9m4e2mr0ui3e8a215n4g
+                name: John
+                object: user
+                updated_at: "2020-06-01T00:00:00Z"
+        "404":
+          description: "not_found: Not Found response."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RequestError"
+components:
+  schemas:
+    RequestError:
+      type: object
+      properties:
+        code:
+          type: string
+          description: The error code.
+          example: Sunt eligendi error voluptatem autem deserunt id.
+        developer_message:
+          type: string
+          description: The error message for developers.
+          example: Enim quo quia laboriosam illo accusamus est.
+        message:
+          type: string
+          description: The error message.
+          example: Laudantium ea est modi beatae.
+        status:
+          type: integer
+          description: The HTTP status code.
+          example: 4729357184750535492
+          format: int64
+      example:
+        code: Fuga minus.
+        developer_message: Odio omnis mollitia aliquid sint.
+        message: Sed deleniti reiciendis.
+        status: 8117293741999464886
+      required:
+        - status
+        - code
+        - message
+    User:
+      type: object
+      properties:
+        created_at:
+          type: string
+          description: Timestamp indicating when the object was created. All timestamps are in RFC3339 format.
+          example: "2020-06-01T00:00:00Z"
+          format: date-time
+        email:
+          type: string
+          description: The email address for the user. Requires the `email` OAuth scope.
+          example: john@example.org
+        email_verified:
+          type: boolean
+          description: Whether the user's email address has been verified. Requires the `email` OAuth scope.
+          example: true
+        id:
+          type: string
+          description: The unique identifier for this object.
+          example: 9m4e2mr0ui3e8a215n4g
+        name:
+          type: string
+          description: The global display name for the user. Names can be overridden for each Community via Member Profiles.
+          example: John
+        object:
+          type: string
+          description: The object type.
+          default: user
+          example: user
+          enum:
+            - user
+        updated_at:
+          type: string
+          description: Timestamp indicating when the object was last updated. All timestamps are in RFC3339 format.
+          example: "2020-06-01T00:00:00Z"
+          format: date-time
+      example:
+        created_at: "2020-06-01T00:00:00Z"
+        email: john@example.org
+        email_verified: true
+        id: 9m4e2mr0ui3e8a215n4ga
+        name: John
+        object: user
+        updated_at: "2020-06-01T00:00:00Z"
+tags:
+  - name: User
+    description: Manage the authenticated User.
